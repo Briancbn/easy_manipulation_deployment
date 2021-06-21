@@ -1,0 +1,11 @@
+digraph "grasp_execution::moveit2::JmgContext"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="grasp_execution::moveit2\l::JmgContext",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" default_ee" ,fontname="Helvetica"];
+  Node2 [label="grasp_execution::Workcell\lContext::Gripper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1WorkcellContext_1_1Gripper.html",tooltip="Context for gripper."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" driver" ,fontname="Helvetica"];
+  Node3 [label="grasp_execution::Workcell\lContext::Executor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1WorkcellContext_1_1Executor.html",tooltip="Context for executor."];
+}

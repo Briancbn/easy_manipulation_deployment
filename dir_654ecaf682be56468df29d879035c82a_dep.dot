@@ -1,0 +1,11 @@
+digraph "/home/runner/work/easy_manipulation_deployment/easy_manipulation_deployment/easy_manipulation_deployment" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_654ecaf682be56468df29d879035c82a {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_654ecaf682be56468df29d879035c82a.html"];
+    dir_654ecaf682be56468df29d879035c82a [shape=plaintext label="easy_manipulation_deployment"];
+    dir_ce58323b14641571eb52a3af054087b0 [shape=box label="grasp_execution" color="red" fillcolor="white" style="filled" URL="dir_ce58323b14641571eb52a3af054087b0.html"];
+    dir_e59519a6cb96e8295e2c68d07e756a0e [shape=box label="grasp_planner" color="red" fillcolor="white" style="filled" URL="dir_e59519a6cb96e8295e2c68d07e756a0e.html"];
+  }
+}

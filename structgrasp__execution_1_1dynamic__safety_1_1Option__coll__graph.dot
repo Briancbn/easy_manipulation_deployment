@@ -1,0 +1,18 @@
+digraph "grasp_execution::dynamic_safety::Option"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="grasp_execution::dynamic\l_safety::Option",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" safety_zone_options" ,fontname="Helvetica"];
+  Node2 [label="grasp_execution::dynamic\l_safety::SafetyZone::Option",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1dynamic__safety_1_1SafetyZone_1_1Option.html",tooltip="Safety Zone option."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" collision_checker_options" ,fontname="Helvetica"];
+  Node3 [label="grasp_execution::dynamic\l_safety::CollisionChecker\l::Option",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1dynamic__safety_1_1CollisionChecker_1_1Option.html",tooltip="Collision checker options."];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" visualizer_options" ,fontname="Helvetica"];
+  Node4 [label="grasp_execution::dynamic\l_safety::Visualizer::Option",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1dynamic__safety_1_1Visualizer_1_1Option.html",tooltip="Option for visualizer."];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" next_point_publisher\l_options" ,fontname="Helvetica"];
+  Node5 [label="grasp_execution::dynamic\l_safety::NextPointPublisher\l::Option",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1dynamic__safety_1_1NextPointPublisher_1_1Option.html",tooltip="Next Point Publisher options."];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" replanner_options" ,fontname="Helvetica"];
+  Node6 [label="grasp_execution::dynamic\l_safety::Replanner::Option",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgrasp__execution_1_1dynamic__safety_1_1Replanner_1_1Option.html",tooltip=" "];
+}
