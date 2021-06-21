@@ -1,0 +1,586 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Grasp Planner General Parameters (Point Cloud) &mdash; EMD alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Grasp Planner General Parameters (End Effectors)" href="grasp_planner_parameters_general_ee.html" />
+    <link rel="prev" title="Grasp Planner General Parameters (Camera)" href="grasp_planner_parameters_general_camera.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EMD
+          
+
+          
+            
+            <img src="../../_static/emd_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/future_plans.html">Future Plans</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/common_concepts.html">Common Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/download_instructions.html">Download Instructions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Individual Package Details</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workcell_builder/workcell_builder.html">Workcell Builder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="grasp_planner.html">Grasp Planner</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="grasp_planner.html#before-running-the-grasp-planner">Before running the Grasp Planner</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_theory.html">Grasp Planning Methodology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="grasp_planner_parameters.html">Grasp Planner Configuration File</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="grasp_planner_parameters_general.html">Grasp Planner General Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters_finger.html">Grasp Planner Finger Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters_suction.html">Grasp Planner Suction Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters.html#sample-configuration-yaml-file">Sample configuration yaml file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#running-the-grasp-planner">Running the Grasp Planner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#useful-information">Useful information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../grasp_execution/grasp_execution_demo.html">Grasp Execution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/emd_example.html">Step-By-Step Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EMD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="grasp_planner.html">Grasp Planner</a> &raquo;</li>
+        
+          <li><a href="grasp_planner_parameters.html">Grasp Planner Configuration File</a> &raquo;</li>
+        
+          <li><a href="grasp_planner_parameters_general.html">Grasp Planner General Parameters</a> &raquo;</li>
+        
+      <li>Grasp Planner General Parameters (Point Cloud)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/emd_packages/grasp_planner/grasp_planner_parameters_general_point_cloud.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grasp-planner-general-parameters-point-cloud">
+<span id="grasp-planner-parameters-general-point-cloud"></span><h1>Grasp Planner General Parameters (Point Cloud)<a class="headerlink" href="#grasp-planner-general-parameters-point-cloud" title="Permalink to this headline">¶</a></h1>
+<p>Parameters that define the Point Cloud parameters used for point cloud processing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grasp_planning_node:
+  ros__parameters:
+    .....
+    point_cloud_params:
+      passthrough_filter_limits_x: <span class="o">[</span>-0.50, <span class="m">0</span>.50<span class="o">]</span>
+      passthrough_filter_limits_y: <span class="o">[</span>-0.15, <span class="m">0</span>.40<span class="o">]</span>
+      passthrough_filter_limits_z: <span class="o">[</span><span class="m">0</span>.01, <span class="m">0</span>.70<span class="o">]</span>
+      segmentation_max_iterations: <span class="m">50</span>
+      segmentation_distance_threshold: <span class="m">0</span>.01
+      cluster_tolerance: <span class="m">0</span>.01
+      min_cluster_size: <span class="m">750</span>
+      cloud_normal_radius: <span class="m">0</span>.03
+      fcl_voxel_size: <span class="m">0</span>.02
+      octomap_resolution: <span class="m">0</span>.01
+</pre></div>
+</div>
+<div class="section" id="passthrough-filtering-parameters">
+<h2>Passthrough Filtering Parameters<a class="headerlink" href="#passthrough-filtering-parameters" title="Permalink to this headline">¶</a></h2>
+<p>In order to <strong>reduce point cloud processing and iteration times</strong>, the Point Cloud Library's
+implementation of the passthrough filter function is used to crop out useful parts of the
+point cloud in question. This is done through setting filter limits in the X, Y and Z axes
+which act as the range within which points in the point cloud will be kept.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>point cloud before filtering</p></th>
+<th class="head"><p>point cloud after filtering</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../_images/pointcloud_before_filter.png"><img alt="image_before_filter" class="align-middle" src="../../_images/pointcloud_before_filter.png" style="width: 270.0px; height: 287.5px;" /></a></p></td>
+<td><p><a class="reference internal" href="../../_images/pointcloud_after_filter.png"><img alt="image_after_filter" class="align-middle" src="../../_images/pointcloud_after_filter.png" style="width: 425.0px; height: 283.0px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>As shown above, unnecessary information on the right side of the point cloud was removed.
+Limits can be set even tighter in order to crop out more of the work surface.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ensure that an appropriate passthrough filter limit is chosen for the X, Y and Z axes. You might end up
+cropping out useful information if the limits are too tight.</p>
+<img alt="../../_images/bad_passthrough.png" class="align-center" src="../../_images/bad_passthrough.png" />
+</div>
+<p>More information can be found in the <a class="reference external" href="https://pointclouds.org/documentation/tutorials/passthrough.html">Passthrough Filter Tutorials</a></p>
+<div class="section" id="point-cloud-params-passthrough-filter-limits-x">
+<h3>point_cloud_params.passthrough_filter_limits_x<a class="headerlink" href="#point-cloud-params-passthrough-filter-limits-x" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>passthrough_filter_limits_x: <span class="o">[</span>-0.50, <span class="m">0</span>.50<span class="o">]</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Lower and Upper Passthrough Filter limits in the X-Axis</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>double array</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tighter the limits, the faster the point cloud will be processed, but you run the risk of cropping out important
+information</p>
+<p>The wider the limits, the slower the point cloud, but you will not crop out important information.</p>
+</div>
+</div>
+<div class="section" id="point-cloud-params-passthrough-filter-limits-y">
+<h3>point_cloud_params.passthrough_filter_limits_y<a class="headerlink" href="#point-cloud-params-passthrough-filter-limits-y" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>passthrough_filter_limits_y: <span class="o">[</span>-0.15, <span class="m">0</span>.40<span class="o">]</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Lower and Upper Passthrough Filter limits in the Y-Axis</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>double array</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tighter the limits, the faster the point cloud will be processed, but you run the risk of cropping out important
+information</p>
+<p>The wider the limits, the slower the point cloud, but you will not crop out important information.</p>
+</div>
+</div>
+<div class="section" id="point-cloud-params-passthrough-filter-limits-z">
+<h3>point_cloud_params.passthrough_filter_limits_z<a class="headerlink" href="#point-cloud-params-passthrough-filter-limits-z" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>passthrough_filter_limits_z: <span class="o">[</span><span class="m">0</span>.01, <span class="m">0</span>.70<span class="o">]</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Lower and Upper Passthrough Filter limits in the Z-Axis</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>double array</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tighter the limits, the faster the point cloud will be processed, but you run the risk of cropping out
+important information.</p>
+<p>The wider the limits, the slower the point cloud, but you will not crop out important information.</p>
+</div>
+</div>
+</div>
+<div class="section" id="plane-segmentation-parameters">
+<h2>Plane Segmentation Parameters<a class="headerlink" href="#plane-segmentation-parameters" title="Permalink to this headline">¶</a></h2>
+<p>For Object extraction, the Grasp Planner will first remove the set of points in the point cloud representing the surface on
+which the objects are placed. This is done using the Point Cloud Library's Plane Segmentation functions, specifically
+Sample Consensus (SAC) methods</p>
+<div class="section" id="point-cloud-params-segmentation-max-iterations">
+<h3>point_cloud_params.segmentation_max_iterations<a class="headerlink" href="#point-cloud-params-segmentation-max-iterations" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>segmentation_max_iterations: <span class="m">50</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Set the Maximum number of iterations for SAC methods</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Int</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The higher the number, the better the result, but longer times will be taken
+The lower the number, the less accurate the result, but shorter time will be taken</p>
+</div>
+</div>
+<div class="section" id="point-cloud-params-segmentation-distance-threshold">
+<h3>point_cloud_params.segmentation_distance_threshold<a class="headerlink" href="#point-cloud-params-segmentation-distance-threshold" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>segmentation_distance_threshold: <span class="m">0</span>.01
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Determines how close a point must be to the object in order to be considered an inlier</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Double</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A higher number ensures that more points will be clustered with the object cluster,
+but you run the risk of including points on the table as part of the object</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A lower number ensures that only objects really close to the cluster is included inside,
+but you may run the risk of missing out some points on the surface</p>
+<img alt="../../_images/bad_segmentation.png" class="align-center" src="../../_images/bad_segmentation.png" />
+</div>
+</div>
+</div>
+<div class="section" id="object-segmentation-parameters">
+<h2>Object Segmentation Parameters<a class="headerlink" href="#object-segmentation-parameters" title="Permalink to this headline">¶</a></h2>
+<p>After the plane has been removed from the point cloud input, the assumption is made that the rest of the point cloud
+represents the pick objects (Unless using the EPD workflow, more on that here: <a class="reference internal" href="grasp_planner_input.html#grasp-planner-input"><span class="std std-ref">Grasp Planner Input Message Types</span></a>). The remaining
+Point Cloud will then be split into clusters using
+<a class="reference external" href="https://pointclouds.org/documentation/classpcl_1_1_euclidean_cluster_extraction.html#a7b723a37211039ad47f10b85d72f3509/">Euclidean Cluster Extraction</a>
+provided by the Point Cloud Library, each cluster representing a grasp object</p>
+<div class="section" id="point-cloud-params-cluster-tolerance">
+<h3>point_cloud_params.cluster_tolerance<a class="headerlink" href="#point-cloud-params-cluster-tolerance" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cluster_tolerance: <span class="m">0</span>.01
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Get the spatial cluster tolerance as a measure in the L2 Euclidean space.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Double</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="point-cloud-params-min-cluster-size">
+<h3>point_cloud_params.min_cluster_size<a class="headerlink" href="#point-cloud-params-min-cluster-size" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>min_cluster_size: <span class="m">750</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>For Euclidean cluster extraction. Determine the minimum number of points to be considered a cluster.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Int</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If it is set too high, small objects may be clustered together to satisfy the minimum cluster size.</p>
+<p>If set too small,certain objects might be split into multiple clusters if the point cloud is not dense enough</p>
+</div>
+</div>
+</div>
+<div class="section" id="normals-estimation-parameters">
+<h2>Normals Estimation Parameters<a class="headerlink" href="#normals-estimation-parameters" title="Permalink to this headline">¶</a></h2>
+<p>For both finger and suction gripper grasp planning, we take into account the surface of the object as well, which involves
+understanding the curvature of the surfaces, which requires estimation of point normals for each point on the surface of the
+object, which we will use the Point Cloud Library to do so.</p>
+<p>More information on the normal estimation for PCL can be found
+<a class="reference external" href="https://pointclouds.org/documentation/tutorials/normal_estimation.html/">here</a></p>
+<div class="section" id="point-cloud-params-cloud-normal-radius">
+<h3>point_cloud_params.cloud_normal_radius<a class="headerlink" href="#point-cloud-params-cloud-normal-radius" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cloud_normal_radius: <span class="m">0</span>.03
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>The radius of points around each point to determine the normal estimation.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Double</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the radius value is too big, you run the risk of including adjacent surfaces around that point,
+which distorts the estimated point features</p>
+</div>
+</div>
+</div>
+<div class="section" id="fcl-collision-object-parameters">
+<h2>FCL Collision Object Parameters<a class="headerlink" href="#fcl-collision-object-parameters" title="Permalink to this headline">¶</a></h2>
+<p>In order to account for collision between end effector and the grasp area/grasp object, we use the
+<a class="reference external" href="https://github.com/flexible-collision-library/fcl">Flexible Collision Library (FCL)</a> as a method to
+generate collision objects for both grasp samples and grasp area.</p>
+<p>This is done by first converting the point cloud to an octomap, then to an FCL collision object. In order to speed up
+conversion time, we first
+<a class="reference external" href="https://pcl.readthedocs.io/en/latest/voxel_grid.html">downsample</a> the point cloud before conversion</p>
+<div class="section" id="point-cloud-params-fcl-voxel-size">
+<h3>point_cloud_params.fcl_voxel_size<a class="headerlink" href="#point-cloud-params-fcl-voxel-size" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fcl_voxel_size: <span class="m">0</span>.02
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Size of resulting voxels after downsampling of point clouds.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Double</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If it is set too large, collision object conversion will be faster, but certain features may be lost during
+downsampling.</p>
+<p>If set too small, collision object conversion will be longer, but the collision object shapes will more accurately
+represent the original point cloud</p>
+</div>
+</div>
+<div class="section" id="point-cloud-params-octomap-resolution">
+<h3>point_cloud_params.octomap_resolution<a class="headerlink" href="#point-cloud-params-octomap-resolution" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>octomap_resolution: <span class="m">0</span>.01
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>Resolution of octomap (Used for conversion to collision object)</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>Double</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="grasp_planner_parameters_general_ee.html" class="btn btn-neutral float-right" title="Grasp Planner General Parameters (End Effectors)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grasp_planner_parameters_general_camera.html" class="btn btn-neutral float-left" title="Grasp Planner General Parameters (Camera)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Glenn Tan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

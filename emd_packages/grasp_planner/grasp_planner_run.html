@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running the Grasp Planner &mdash; EMD alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Grasp Planner Input Message Types" href="grasp_planner_input.html" />
+    <link rel="prev" title="Grasp Planner Suction Parameters (Planning)" href="grasp_planner_parameters_suction_planning.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EMD
+          
+
+          
+            
+            <img src="../../_static/emd_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/future_plans.html">Future Plans</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/common_concepts.html">Common Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/download_instructions.html">Download Instructions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Individual Package Details</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workcell_builder/workcell_builder.html">Workcell Builder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="grasp_planner.html">Grasp Planner</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#before-running-the-grasp-planner">Before running the Grasp Planner</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="grasp_planner.html#running-the-grasp-planner">Running the Grasp Planner</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running the Grasp Planner</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-grasp-planning-output">Example Grasp Planning Output:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#useful-information">Useful information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../grasp_execution/grasp_execution_demo.html">Grasp Execution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/emd_example.html">Step-By-Step Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EMD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="grasp_planner.html">Grasp Planner</a> &raquo;</li>
+        
+      <li>Running the Grasp Planner</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/emd_packages/grasp_planner/grasp_planner_run.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-the-grasp-planner">
+<span id="grasp-planner-run"></span><h1>Running the Grasp Planner<a class="headerlink" href="#running-the-grasp-planner" title="Permalink to this headline">¶</a></h1>
+<p>To properly run the Grasp Planner, there are 3 main components needed for running the grasp planner</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that for these three terminals, the ROS2 distributions are sourced, and the workspace is built and sourced as well</p>
+</div>
+<ol class="arabic">
+<li><p>Perception source</p>
+<p>Perception Source can be provided via Direct Camera Input, or via the Easy Perception Deployment ROS2 package.</p>
+</li>
+<li><p>Package Publishing the TF of the camera frame</p>
+<p>The Grasp Planner uses a <a class="reference external" href="http://wiki.ros.org/tf2/Tutorials/Using%20stamped%20datatypes%20with%20tf2%3A%3AMessageFilter">TF2 Message Filter</a>
+that waits until the camera frame is published before triggering the planning itself, thus ensure that whatever package you are using is
+publishing the tf of the camera frame. You can configure the camera frame name directly in the grasp planner configuration file. More can be
+found here: <a class="reference internal" href="grasp_planner_parameters_general_camera.html#grasp-planner-parameters-general-camera"><span class="std std-ref">Grasp Planner General Parameters (Camera)</span></a></p>
+<p>The EMD Grasp Execution Component provides such a tf publisher feature, thus you can use that as well, by running</p>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch grasp_execution grasp_execution.launch.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>EMD Grasp Planner</p></li>
+</ol>
+<ul class="simple">
+<li><p>Copy any of the files found in <code class="docutils literal notranslate"><span class="pre">grasp_planner/example/launch</span></code>, rename it to <code class="docutils literal notranslate"><span class="pre">grasp_planner_(end_effector)_launch.py</span></code> and replace
+the <code class="docutils literal notranslate"><span class="pre">params_(end_effector).yaml</span></code> within the launch file with the name of the .yaml file you have created. More can be
+found here: <a class="reference internal" href="grasp_planner_parameters.html#grasp-planner-parameters"><span class="std std-ref">Grasp Planner Configuration File</span></a></p></li>
+</ul>
+<p>To run the grasp planner, run the following command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch grasp_planner grasp_planner_<span class="o">(</span>end_effector<span class="o">)</span>_launch.py
+</pre></div>
+</div>
+<p>The package will then show the following when waiting for the perception topic</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>pcl_test_node-1<span class="o">]</span> waiting...
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A blank Cloud Viewer window will pop up, but will only be used if the <code class="code docutils literal notranslate"><span class="pre">point_cloud_visualization</span></code> parameter in the config file
+is true.</p>
+</div>
+<div class="section" id="example-grasp-planning-output">
+<h2>Example Grasp Planning Output:<a class="headerlink" href="#example-grasp-planning-output" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Finger gripper:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278539</span>.845614356<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Using Direct Camera Input....
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278539</span>.847663649<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: waiting....
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278568</span>.222839760<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Camera Point Cloud Received!
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278568</span>.222866905<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Processing Point Cloud...
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278568</span>.314758446<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Applying Passthrough filters
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278568</span>.388353728<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Removing Statistical Outlier
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278569</span>.016152941<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Downsampling Point Cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278569</span>.025191278<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Segmenting plane
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278569</span>.052835633<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Point cloud successfully processed!
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278574</span>.641794991<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Extracting Objects from point cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278575</span>.542850053<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Extracted <span class="m">1</span> from point cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278575</span>.542983933<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Loading finger gripper robotiq_2f
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278575</span>.543278724<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: All End Effectors Loaded
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278575</span>.723888039<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Grasp planning <span class="nb">time</span> <span class="k">for</span> robotiq_2f <span class="m">10</span> <span class="o">[</span>ms<span class="o">]</span>
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278575</span>.723914241<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: <span class="m">19</span> Grasp Samples have been generated.
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Proceed to click on the Cloud Viewer window and it will show the point cloud and bounding box of the object (Use the mouse scroll to view the point clouds better).</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Q</span></code> key within the Cloud Viewer window to view the results of the grasp_samples</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>The terminal running grasp_planner_launch.py will show the ranks of all ranked grasps on the object and the total number of grasps that can be sampled for the object.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>First grasp visualized on the viewer is the best grasp.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>Pressing <code class="docutils literal notranslate"><span class="pre">Q</span></code> will show the rest of the consecutively ranked grasps.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>Once all the grasps have been screened through, the grasp_planner will publish the /grasp_tasks topic.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the point clouds shown on Cloud Viewer is not satisfactory, adjust the passthrough_filter_limits parameters defined in <a class="reference internal" href="grasp_planner_parameters.html#grasp-planner-parameters"><span class="std std-ref">Grasp Planner Configuration File</span></a> to
+suit to your desired environment.</p>
+</div>
+<p class="rubric">Suction gripper:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278648</span>.176338963<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Using Direct Camera Input....
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278648</span>.177783690<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: waiting....
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278652</span>.348536010<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Camera Point Cloud Received!
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278652</span>.348569074<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Processing Point Cloud...
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278652</span>.453359019<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Applying Passthrough filters
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278652</span>.531642625<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Removing Statistical Outlier
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278653</span>.242787447<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Downsampling Point Cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278653</span>.257366582<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Segmenting plane
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278653</span>.289915130<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Point cloud successfully processed!
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278721</span>.836112062<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Extracting Objects from point cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278722</span>.761648258<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Extracted <span class="m">1</span> from point cloud
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278722</span>.761778564<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Loading suction gripper suction_cup
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278722</span>.761936044<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: All End Effectors Loaded
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278723</span>.371410203<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: Grasp planning <span class="nb">time</span> <span class="k">for</span> suction_cup <span class="m">490</span> <span class="o">[</span>ms<span class="o">]</span>
+<span class="o">[</span>demo_node-1<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1622278723</span>.371440840<span class="o">]</span> <span class="o">[</span>GraspScene<span class="o">]</span>: <span class="m">64</span> Grasp Samples have been generated.
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Proceed to click on the Cloud Viewer window and it will show the point cloud and bounding box of the object (Use the mouse scroll to view the point clouds better).</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Press the <code class="docutils literal notranslate"><span class="pre">Q</span></code> key within the Cloud Viewer window to view the results of the grasp_samples</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>The terminal running grasp_planner_launch.py will show the ranks of all ranked grasps on the object and the total number of grasps that can be sampled for the object.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>First grasp visualized on the viewer is the best grasp.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>Pressing <code class="docutils literal notranslate"><span class="pre">Q</span></code> will show the rest of the ranked grasps consecutively.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>Once all the grasps have been screened through, the grasp_planner will publish the /grasp_tasks topic.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the point clouds shown on Cloud Viewer is not satisfactory, adjust the passthrough_filter_limits parameters defined in <a class="reference internal" href="grasp_planner_parameters.html#grasp-planner-parameters"><span class="std std-ref">Grasp Planner Configuration File</span></a>
+to suit to your desired environment.</p>
+</div>
+<p>The pose and orientation of the top ranked grasp will then be published for <a class="reference internal" href="../../tutorial/grasp_execution_example/grasp_execution_example.html#grasp-execution-example"><span class="std std-ref">Grasp Execution Example</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="grasp_planner_input.html" class="btn btn-neutral float-right" title="Grasp Planner Input Message Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grasp_planner_parameters_suction_planning.html" class="btn btn-neutral float-left" title="Grasp Planner Suction Parameters (Planning)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Glenn Tan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

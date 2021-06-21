@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Grasp Planner General Parameters &mdash; EMD alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Grasp Planner General Parameters (EPD)" href="grasp_planner_parameters_general_epd.html" />
+    <link rel="prev" title="Grasp Planner Configuration File" href="grasp_planner_parameters.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EMD
+          
+
+          
+            
+            <img src="../../_static/emd_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/future_plans.html">Future Plans</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/common_concepts.html">Common Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/download_instructions.html">Download Instructions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Individual Package Details</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workcell_builder/workcell_builder.html">Workcell Builder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="grasp_planner.html">Grasp Planner</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="grasp_planner.html#before-running-the-grasp-planner">Before running the Grasp Planner</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_theory.html">Grasp Planning Methodology</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="grasp_planner_parameters.html">Grasp Planner Configuration File</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Grasp Planner General Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters_finger.html">Grasp Planner Finger Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters_suction.html">Grasp Planner Suction Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="grasp_planner_parameters.html#sample-configuration-yaml-file">Sample configuration yaml file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#running-the-grasp-planner">Running the Grasp Planner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#useful-information">Useful information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../grasp_execution/grasp_execution_demo.html">Grasp Execution</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/emd_example.html">Step-By-Step Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EMD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="grasp_planner.html">Grasp Planner</a> &raquo;</li>
+        
+          <li><a href="grasp_planner_parameters.html">Grasp Planner Configuration File</a> &raquo;</li>
+        
+      <li>Grasp Planner General Parameters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/emd_packages/grasp_planner/grasp_planner_parameters_general.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grasp-planner-general-parameters">
+<span id="grasp-planner-parameters-general"></span><h1>Grasp Planner General Parameters<a class="headerlink" href="#grasp-planner-general-parameters" title="Permalink to this headline">¶</a></h1>
+<p>The parameters described here are the general configuration components for both finger and suction end effectors. Most of the parameters here are used for either point cloud processing
+or ROS2 component definitions.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grasp_planning_node:
+  ros__parameters:
+    grasp_output_service: <span class="s2">&quot;grasp_requests&quot;</span>
+    easy_perception_deployment:
+      epd_enabled: <span class="nb">false</span>
+      tracking_enabled: <span class="nb">false</span>
+      epd_topic: <span class="s2">&quot;/processor/epd_localize_output&quot;</span>
+    camera_parameters:
+      point_cloud_topic: <span class="s2">&quot;/camera/pointcloud&quot;</span>
+      camera_frame: <span class="s2">&quot;camera_color_optical_frame&quot;</span>
+    point_cloud_params:
+      passthrough_filter_limits_x: <span class="o">[</span>-0.50, <span class="m">0</span>.50<span class="o">]</span>
+      passthrough_filter_limits_y: <span class="o">[</span>-0.15, <span class="m">0</span>.40<span class="o">]</span>
+      passthrough_filter_limits_z: <span class="o">[</span><span class="m">0</span>.01, <span class="m">0</span>.70<span class="o">]</span>
+      segmentation_max_iterations: <span class="m">50</span>
+      segmentation_distance_threshold: <span class="m">0</span>.01
+      cluster_tolerance: <span class="m">0</span>.01
+      min_cluster_size: <span class="m">750</span>
+      cloud_normal_radius: <span class="m">0</span>.03
+      fcl_voxel_size: <span class="m">0</span>.02
+    end_effectors:
+      end_effector_names: <span class="o">[</span>finger_gripper_1, suction_gripper_1<span class="o">]</span>
+      finger_gripper_1:
+        ....
+      suction_gripper_1:
+        .....
+    visualization_params:
+      point_cloud_visualization: <span class="nb">true</span>
+</pre></div>
+</div>
+<div class="section" id="parameter-descriptions">
+<h2>Parameter Descriptions<a class="headerlink" href="#parameter-descriptions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="grasp-output-service">
+<h3>grasp_output_service<a class="headerlink" href="#grasp-output-service" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Description</p></th>
+<td><p>ROS2 service name for the grasp execution component</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Type</p></th>
+<td><p>string</p></td>
+</tr>
+</tbody>
+</table>
+<p>Details of the GraspRequest Service can be found here: <a class="reference internal" href="grasp_planner_output.html#grasp-planner-output"><span class="std std-ref">Grasp Planner Output Message Types</span></a></p>
+<p>It is recommended to use the EMD Grasp Execution component. If you do so, keep set <code class="code docutils literal notranslate"><span class="pre">grasp_output_service</span></code> as
+<code class="code docutils literal notranslate"><span class="pre">&quot;grasp_requests&quot;</span></code></p>
+</div>
+<div class="section" id="easy-perception-deployment">
+<h3>easy_perception_deployment<a class="headerlink" href="#easy-perception-deployment" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grasp_planner_parameters_general_epd.html">Grasp Planner General Parameters (EPD)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_epd.html#easy-perception-deployment-epd-enabled">easy_perception_deployment.epd_enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_epd.html#easy-perception-deployment-tracking-enabled">easy_perception_deployment.tracking_enabled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_epd.html#easy-perception-deployment-epd-topic">easy_perception_deployment.epd_topic</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="camera-parameters">
+<h3>camera_parameters<a class="headerlink" href="#camera-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grasp_planner_parameters_general_camera.html">Grasp Planner General Parameters (Camera)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_camera.html#camera-parameters-point-cloud-topic">camera_parameters.point_cloud_topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_camera.html#camera-parameters-camera-frame">camera_parameters.camera_frame</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="point-cloud-params">
+<h3>point_cloud_params<a class="headerlink" href="#point-cloud-params" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html">Grasp Planner General Parameters (Point Cloud)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#passthrough-filtering-parameters">Passthrough Filtering Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-passthrough-filter-limits-x">point_cloud_params.passthrough_filter_limits_x</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-passthrough-filter-limits-y">point_cloud_params.passthrough_filter_limits_y</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-passthrough-filter-limits-z">point_cloud_params.passthrough_filter_limits_z</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#plane-segmentation-parameters">Plane Segmentation Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-segmentation-max-iterations">point_cloud_params.segmentation_max_iterations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-segmentation-distance-threshold">point_cloud_params.segmentation_distance_threshold</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#object-segmentation-parameters">Object Segmentation Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-cluster-tolerance">point_cloud_params.cluster_tolerance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-min-cluster-size">point_cloud_params.min_cluster_size</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#normals-estimation-parameters">Normals Estimation Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-cloud-normal-radius">point_cloud_params.cloud_normal_radius</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#fcl-collision-object-parameters">FCL Collision Object Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-fcl-voxel-size">point_cloud_params.fcl_voxel_size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_planner_parameters_general_point_cloud.html#point-cloud-params-octomap-resolution">point_cloud_params.octomap_resolution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="end-effectors">
+<h3>end_effectors<a class="headerlink" href="#end-effectors" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grasp_planner_parameters_general_ee.html">Grasp Planner General Parameters (End Effectors)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_ee.html#end-effectors-end-effector-names">end_effectors.end_effector_names</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="visualization-params">
+<h3>visualization_params<a class="headerlink" href="#visualization-params" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="grasp_planner_parameters_general_viz.html">Grasp Planner General Parameters (Visualization)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grasp_planner_parameters_general_viz.html#visualization-params-point-cloud-visualization">visualization_params.point_cloud_visualization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="grasp_planner_parameters_general_epd.html" class="btn btn-neutral float-right" title="Grasp Planner General Parameters (EPD)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grasp_planner_parameters.html" class="btn btn-neutral float-left" title="Grasp Planner Configuration File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Glenn Tan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

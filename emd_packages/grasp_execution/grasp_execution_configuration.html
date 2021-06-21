@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Grasp Execution Configuration Files &mdash; EMD alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Step-By-Step Tutorials" href="../../tutorial/emd_example.html" />
+    <link rel="prev" title="Grasp Execution" href="grasp_execution_demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EMD
+          
+
+          
+            
+            <img src="../../_static/emd_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about/future_plans.html">Future Plans</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/common_concepts.html">Common Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/download_instructions.html">Download Instructions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Individual Package Details</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workcell_builder/workcell_builder.html">Workcell Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grasp_planner/grasp_planner.html">Grasp Planner</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="grasp_execution_demo.html">Grasp Execution</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grasp_execution_demo.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="grasp_execution_demo.html#package-configuration">Package configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="grasp_execution_demo.html#launch-file">Launch file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grasp_execution_demo.html#grasp-execution-node-cpp">grasp_execution_node.cpp</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="grasp_execution_demo.html#additional-configurations">Additional configurations</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Grasp Execution Configuration Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grasp_execution_demo.html#running-grasp-execution">Running grasp execution</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/emd_example.html">Step-By-Step Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EMD</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="grasp_execution_demo.html">Grasp Execution</a> &raquo;</li>
+        
+      <li>Grasp Execution Configuration Files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/emd_packages/grasp_execution/grasp_execution_configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="grasp-execution-configuration-files">
+<span id="grasp-execution-configuration"></span><h1>Grasp Execution Configuration Files<a class="headerlink" href="#grasp-execution-configuration-files" title="Permalink to this headline">¶</a></h1>
+<p>Grasp Execution has many features and capabilities that can be turned on and off, and customized to the your liking. This is done in the configuration files, that are typically stored in the config folder of your package. The YAML format is used for this file for better understanding and readability.</p>
+<p>Below lists the configuration files in the package that change different parameters in the grasp execution pipeline.</p>
+<ul class="simple">
+<li><p>Changing the start positions</p></li>
+<li><p>Changing the fake object published</p></li>
+<li><p>Changing the grasp execution parameters</p></li>
+<li><p>Changing the dynamic safety execution parameters</p></li>
+<li><p>Changing the workcell configurations</p></li>
+</ul>
+<div class="section" id="changing-the-start-positions">
+<h2>Changing the start positions<a class="headerlink" href="#changing-the-start-positions" title="Permalink to this headline">¶</a></h2>
+<p>To change the home state, edit the values of each joint in the file <code class="docutils literal notranslate"><span class="pre">grasp_execution/example/config/start_positions.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>initial_positions:
+  shoulder_pan_joint: <span class="m">1</span>.57
+  shoulder_lift_joint: -2.35
+  elbow_joint: <span class="m">1</span>.83
+  wrist_1_joint: -1.03
+  wrist_2_joint: -1.57
+  wrist_3_joint: <span class="m">0</span>.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-fake-object-published">
+<h2>Changing the fake object published<a class="headerlink" href="#changing-the-fake-object-published" title="Permalink to this headline">¶</a></h2>
+<p>To change the location and dimensions of the fake object published, edit following parameters in the file <code class="docutils literal notranslate"><span class="pre">grasp_execution/example/config/fake_grasp_pose_publisher.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fake_grasp_pose_publisher:
+  ros__parameters:
+    interface: service
+    frame_id: camera_frame
+    ee_id: robotiq_2f
+    grasp_pose: <span class="o">[</span><span class="m">0</span>.0126, <span class="m">0</span>.0322, <span class="m">0</span>.442,
+                 <span class="m">0</span>.0, <span class="m">0</span>.0, <span class="m">0</span>.9997, <span class="m">0</span>.0250<span class="o">]</span>
+
+    object_pose: <span class="o">[</span><span class="m">0</span>.0128, <span class="m">0</span>.0330, <span class="m">0</span>.443,
+                  <span class="m">0</span>.0, <span class="m">0</span>.0, <span class="m">0</span>.9997, <span class="m">0</span>.0250<span class="o">]</span>
+
+    object_dimensions: <span class="o">[</span><span class="m">0</span>.087, <span class="m">0</span>.167, <span class="m">0</span>.023<span class="o">]</span>
+
+    delay: <span class="m">1</span>.5
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>frame_id</p></td>
+<td><p>String</p></td>
+<td><p>Base frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>grasp_pose</p></td>
+<td><p>double array</p></td>
+<td><p>Location that the robot will plan to</p></td>
+</tr>
+<tr class="row-even"><td><p>object_pose</p></td>
+<td><p>double array</p></td>
+<td><p>Location that the object will spawn at</p></td>
+</tr>
+<tr class="row-odd"><td><p>object_dimensions</p></td>
+<td><p>double array</p></td>
+<td><p>Dimensions of the object (x,y,z)</p></td>
+</tr>
+<tr class="row-even"><td><p>delay</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="changing-the-grasp-execution-parameters">
+<h2>Changing the grasp execution parameters<a class="headerlink" href="#changing-the-grasp-execution-parameters" title="Permalink to this headline">¶</a></h2>
+<p>To change the configuration of the default grasp execution, edit following parameters in the file <code class="docutils literal notranslate"><span class="pre">grasp_execution/example/config/grasp_execution.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grasp_execution_node:
+  ros__parameters:
+    planning_scene_monitor_options:
+      name: <span class="s2">&quot;planning_scene_monitor&quot;</span>
+      robot_description: <span class="s2">&quot;robot_description&quot;</span>
+      joint_state_topic: <span class="s2">&quot;/joint_states&quot;</span>
+      attached_collision_object_topic: <span class="s2">&quot;/moveit_cpp/planning_scene_monitor&quot;</span>
+      publish_planning_scene_topic: <span class="s2">&quot;/moveit_cpp/publish_planning_scene&quot;</span>
+      monitored_planning_scene_topic: <span class="s2">&quot;/moveit_cpp/monitored_planning_scene&quot;</span>
+      wait_for_initial_state_timeout: <span class="m">10</span>.0
+
+    planning_pipelines:
+      <span class="c1">#namespace: &quot;moveit_cpp&quot;  # optional, default is ~</span>
+      pipeline_names: <span class="o">[</span><span class="s2">&quot;ompl&quot;</span><span class="o">]</span>
+
+    plan_request_params:
+      planning_attempts: <span class="m">1</span>
+      planning_time: <span class="m">0</span>.5
+      planning_pipeline: ompl
+      max_velocity_scaling_factor: <span class="m">1</span>.0
+      max_acceleration_scaling_factor: <span class="m">1</span>.0
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">planning_scene_monitor_options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>robot_description</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>joint_state_topic</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>attached_collision_object_topic</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>publish_planning_scene_topic</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>monitored_planning_scene_topic</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>wait_for_initial_state_timeout</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">planning_pipelines</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pipeline_names</p></td>
+<td><p>string array</p></td>
+<td><p>Planning pipelines to be used (as of now only ompl is supported)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">plan_request_params</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>planning_attempts</p></td>
+<td><p>int</p></td>
+<td><p>Number of planning attempts</p></td>
+</tr>
+<tr class="row-odd"><td><p>planning_pipeline</p></td>
+<td><p>string</p></td>
+<td><p>planning pipeline used</p></td>
+</tr>
+<tr class="row-even"><td><p>max_velocity_scaling_factor</p></td>
+<td><p>double</p></td>
+<td><p>Maximum velocity scale</p></td>
+</tr>
+<tr class="row-odd"><td><p>max_acceleration_scaling_factor</p></td>
+<td><p>double</p></td>
+<td><p>Maximum acceleration scale</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="changing-the-dynamic-safety-execution-parameters">
+<h2>Changing the dynamic safety execution parameters<a class="headerlink" href="#changing-the-dynamic-safety-execution-parameters" title="Permalink to this headline">¶</a></h2>
+<p>To change the configuration of the grasp execution with dynamic safety, edit following parameters in the file <code class="docutils literal notranslate"><span class="pre">grasp_execution/example/config/dynamic_safety_demo.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dynamic_safety_demo_node:
+  ros__parameters:
+    planning_scene_monitor_options:
+      name: <span class="s2">&quot;planning_scene_monitor&quot;</span>
+      robot_description: <span class="s2">&quot;robot_description&quot;</span>
+      joint_state_topic: <span class="s2">&quot;/joint_states&quot;</span>
+      attached_collision_object_topic: <span class="s2">&quot;/moveit_cpp/planning_scene_monitor&quot;</span>
+      publish_planning_scene_topic: <span class="s2">&quot;/moveit_cpp/publish_planning_scene&quot;</span>
+      monitored_planning_scene_topic: <span class="s2">&quot;/moveit_cpp/monitored_planning_scene&quot;</span>
+      wait_for_initial_state_timeout: <span class="m">10</span>.0
+
+    planning_pipelines:
+      <span class="c1">#namespace: &quot;moveit_cpp&quot;  # optional, default is ~</span>
+      pipeline_names: <span class="o">[</span><span class="s2">&quot;ompl&quot;</span><span class="o">]</span>
+
+    plan_request_params:
+      planning_attempts: <span class="m">1</span>
+      planning_time: <span class="m">0</span>.5
+      planning_pipeline: ompl
+      max_velocity_scaling_factor: <span class="m">1</span>.0
+      max_acceleration_scaling_factor: <span class="m">1</span>.0
+
+    <span class="c1"># Load octomap</span>
+    load_octomap: <span class="nb">true</span>
+
+    <span class="c1"># Dynamic safety parameters</span>
+    rate: <span class="m">20</span>
+    allow_replan: <span class="nb">true</span>
+    visualize: <span class="nb">true</span>
+
+    safety_zone:
+      manual: <span class="nb">true</span>
+      unit_type: second
+      collision_checking_deadline: <span class="m">0</span>.05
+      slow_down_time: <span class="m">0</span>.2
+      replan_deadline: <span class="m">1</span>.2
+      look_ahead_time: <span class="m">1</span>.65
+
+    collision_checker:
+      distance: <span class="nb">false</span>
+      continuous: <span class="nb">false</span>
+      step: <span class="m">0</span>.1
+      thread_count: <span class="m">8</span>
+      realtime: <span class="nb">false</span>
+
+    next_point_publisher:
+      command_out_type: <span class="s2">&quot;trajectory_msgs/JointTrajectory&quot;</span>
+      publish_joint_position: <span class="nb">true</span>
+      publish_joint_velocity: <span class="nb">false</span>
+      publish_joint_effort: <span class="nb">false</span>
+
+    replanner:
+      planner_name: ompl
+
+    visualizer:
+      publish_frequency: <span class="m">10</span>
+      step: <span class="m">0</span>.1
+      topic: <span class="s2">&quot;/dynamic_safety/displayed_state&quot;</span>
+</pre></div>
+</div>
+<p>The first half of the parameters are the same as described in grasp_execution.yaml</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>load_octomap</p></td>
+<td><p>bool</p></td>
+<td><p>Load the octomap</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>rate</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>allow_replan</p></td>
+<td><p>bool</p></td>
+<td><p>Replan if collision is detected. If set to false the robot will simply stop to avoid collision</p></td>
+</tr>
+<tr class="row-even"><td><p>visualize</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">safety_zone</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>manual</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>unit_type</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>collision_checking_deadline</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>slow_down_time</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>replan_deadline</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>look_ahead_time</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">collision_checker</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>distance</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>continuous</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>step</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>thread_count</p></td>
+<td><p>int</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>realtime</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">next_point_publisher</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>command_out_type</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>publish_joint_position</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>publish_joint_velocity</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>publish_joint_effort</p></td>
+<td><p>bool</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">replanner</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>planner_name</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">visualizer</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>publish_frequency</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>step</p></td>
+<td><p>double</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>topic</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="changing-the-workcell-configurations">
+<h2>Changing the workcell configurations<a class="headerlink" href="#changing-the-workcell-configurations" title="Permalink to this headline">¶</a></h2>
+<p>To change the configuration of your workcell, edit following parameters in the file <code class="docutils literal notranslate"><span class="pre">grasp_execution/example/config/dynamic_safety_demo.yaml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>workcell:
+- group_name: manipulator
+  executors:
+    default:
+      plugin: grasp_execution/DefaultExecutor
+    ds_async:
+      plugin: grasp_execution/DynamicSafetyAsyncExecutor
+      controller: ur5_arm_controller
+  end_effectors:
+    robotiq_2f0:
+      brand: robotiq_2f
+      link: ee_palm
+      clearance: <span class="m">0</span>.1
+      driver:
+        plugin: grasp_execution/DummyGripperDriver
+        controller: <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>group_name</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>end_effectors.robotiq_2f0.link</p></td>
+<td><p>string</p></td>
+<td><p>Tip link of end effector</p></td>
+</tr>
+<tr class="row-even"><td><p>end_effectors.robotiq_2f0.clearance</p></td>
+<td><p>double</p></td>
+<td><p>Distance above the object that the end effector would plan to before moving down to pick the object up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../tutorial/emd_example.html" class="btn btn-neutral float-right" title="Step-By-Step Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grasp_execution_demo.html" class="btn btn-neutral float-left" title="Grasp Execution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Glenn Tan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
