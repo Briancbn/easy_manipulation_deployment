@@ -23,6 +23,8 @@
 #include "boost/uuid/random_generator.hpp"
 #include "boost/uuid/uuid_io.hpp"
 
+#include "geometry_msgs/msg/pose_stamped.hpp"
+
 #include "tf2_ros/buffer.h"
 #include "tf2/impl/utils.h"
 
