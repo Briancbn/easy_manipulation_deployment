@@ -4,9 +4,29 @@ include:
   - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
 
 # Build with moveit
-foxy-moveit2-nightly:
+nightly:
   image:
-    name: registry.gitlab.com/rosi-ap/rosiap_docker_images:moveit-foxy-nightly
+    name: registry.gitlab.com/rosi-ap/rosiap_docker_images:moveit-rolling-nightly
+
+  cache:
+    key: ${CI_JOB_NAME}
+    paths:
+      - .ccache/
+
+  before_script:
+    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
+
+  variables:
+    ISOLATION: "shell"
+    ROS_DISTRO: "rolling"
+    CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
+
+  script:
+    - .industrial_ci/gitlab.sh
+
+foxy-coverage:
+  image:
+    name: ros:foxy
 
   cache:
     key: ${CI_JOB_NAME}
@@ -29,27 +49,7 @@ foxy-moveit2-nightly:
     - ./coverage.sh ci
     - bash <(curl -s https://codecov.io/bash) -f ./coverage.info
 
-foxy-moveit2-release:
-  image:
-    name: ros:foxy
-
-  cache:
-    key: ${CI_JOB_NAME}
-    paths:
-      - .ccache/
-
-  before_script:
-    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
-
-  variables:
-    ISOLATION: "shell"
-    ROS_DISTRO: "foxy"
-    CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
-
-  script:
-    - .industrial_ci/gitlab.sh
-
-galactic:
+galactic-testing:
   image:
     name: ros:galactic
 
@@ -64,6 +64,7 @@ galactic:
   variables:
     ISOLATION: "shell"
     ROS_DISTRO: "galactic"
+    ROS_REPO: "testing"
     CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
 
   script:
