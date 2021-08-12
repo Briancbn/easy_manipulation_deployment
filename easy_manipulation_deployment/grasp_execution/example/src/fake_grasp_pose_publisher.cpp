@@ -39,12 +39,12 @@ public:
     geometry_msgs::msg::PoseStamped grasp_pose, object_pose;
     grasp_pose.header.stamp = this->now();
 
-    declare_parameter("interface");
-    declare_parameter("frame_id");
-    declare_parameter("grasp_pose");
-    declare_parameter("object_pose");
-    declare_parameter("object_dimensions");
-    declare_parameter("delay");
+    declare_parameter<std::string>("interface");
+    declare_parameter<std::string>("frame_id");
+    declare_parameter<std::vector<double>>("grasp_pose");
+    declare_parameter<std::vector<double>>("object_pose");
+    declare_parameter<std::vector<double>>("object_dimensions");
+    declare_parameter<double>("delay");
 
     std::string frame_id;
     std::string ee_id;
@@ -74,7 +74,7 @@ public:
     if (!parse_pose_vector(grasp_pose_vector, grasp_pose.pose)) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Grasp pose should have 6 or 7 arguments, instead %u is found.",
+        "Grasp pose should have 6 or 7 arguments, instead %lu is found.",
         grasp_pose_vector.size());
       return;
     }
@@ -83,7 +83,7 @@ public:
     if (!parse_pose_vector(object_pose_vector, object_pose.pose)) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Object pose should have 6 or 7 arguments, instead %u is found.",
+        "Object pose should have 6 or 7 arguments, instead %lu is found.",
         object_pose_vector.size());
       return;
     }
@@ -91,7 +91,7 @@ public:
     if (object_dimensions.size() != 3) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Object dimension shoudl have 3 arguments, instead %u is found.",
+        "Object dimension shoudl have 3 arguments, instead %lu is found.",
         object_dimensions.size());
       return;
     }
