@@ -19,6 +19,7 @@ nightly:
   variables:
     ISOLATION: "shell"
     ROS_DISTRO: "rolling"
+    ROS_REPO: "main"
     CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
 
   script:
@@ -26,15 +27,12 @@ nightly:
 
 foxy-coverage:
   image:
-    name: ros:foxy
+    name: ubuntu:20.04
 
   cache:
     key: ${CI_JOB_NAME}
     paths:
       - .ccache/
-
-  before_script:
-    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
 
   variables:
     ISOLATION: "shell"
@@ -43,6 +41,8 @@ foxy-coverage:
     TARGET_CMAKE_ARGS: "-DCMAKE_C_FLAGS='--coverage' -DCMAKE_CXX_FLAGS='--coverage'"
 
   script:
+    - apt-get update && apt-get install -y git
+    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
     - .industrial_ci/gitlab.sh
 
   after_script:
@@ -51,36 +51,31 @@ foxy-coverage:
 
 galactic-testing:
   image:
-    name: ros:galactic
+    name: ubuntu:20.04
 
   cache:
     key: ${CI_JOB_NAME}
     paths:
       - .ccache/
-
-  before_script:
-    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
 
   variables:
     ISOLATION: "shell"
     ROS_DISTRO: "galactic"
-    ROS_REPO: "testing"
     CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
 
   script:
+    - apt-get update && apt-get install -y git
+    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
     - .industrial_ci/gitlab.sh
 
 rolling:
   image:
-    name: ros:rolling
+    name: ubuntu:20.04
 
   cache:
     key: ${CI_JOB_NAME}
     paths:
       - .ccache/
-
-  before_script:
-    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
 
   variables:
     ISOLATION: "shell"
@@ -88,4 +83,6 @@ rolling:
     CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
 
   script:
+    - apt-get update && apt-get install -y git
+    - git clone --quiet --depth 1 https://github.com/ros-industrial/industrial_ci .industrial_ci -b master
     - .industrial_ci/gitlab.sh
