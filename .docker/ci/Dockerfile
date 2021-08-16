@@ -1,4 +1,4 @@
-FROM ros:foxy-ros-base-focal
+FROM ros:rolling
 
 ENV MOVEIT_WS=/opt/moveit2
 WORKDIR ${MOVEIT_WS}
