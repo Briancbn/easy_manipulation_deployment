@@ -17,7 +17,7 @@ jobs:
           - {ROS_DISTRO: galactic, ISOLATION: "shell"}
           - {ROS_DISTRO: rolling, ISOLATION: "shell"}
     env:
-      CCACHE_DIR: /github/home/.ccache
+      CCACHE_DIR: ~/.ccache
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
