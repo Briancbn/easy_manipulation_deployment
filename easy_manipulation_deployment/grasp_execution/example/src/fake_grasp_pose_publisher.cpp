@@ -39,34 +39,34 @@ public:
     geometry_msgs::msg::PoseStamped grasp_pose, object_pose;
     grasp_pose.header.stamp = this->now();
 
-    declare_parameter<std::string>("interface");
-    declare_parameter<std::string>("frame_id");
-    declare_parameter<std::vector<double>>("grasp_pose");
-    declare_parameter<std::vector<double>>("object_pose");
-    declare_parameter<std::vector<double>>("object_dimensions");
-    declare_parameter<double>("delay");
-
-    std::string frame_id;
-    std::string ee_id;
-
     std::vector<double> grasp_pose_vector{-0.1, 0.4, 0.07, M_PI, 0, 0};
     std::vector<double> object_pose_vector{-0.1, 0.4, 0.05, 0, 0, 0};
     std::vector<double> object_dimensions{0.02, 0.02, 0.1};
 
+    declare_parameter<std::string>("interface", "topic");
+    declare_parameter<std::string>("frame_id", "base_link");
+    declare_parameter<std::vector<double>>("grasp_pose", grasp_pose_vector);
+    declare_parameter<std::vector<double>>("object_pose", object_pose_vector);
+    declare_parameter<std::vector<double>>("object_dimensions", object_dimensions);
+    declare_parameter<double>("delay", 2.0);
+
+    std::string frame_id;
+    std::string ee_id;
+
     double delay;
 
-    get_parameter_or<std::string>("interface", interface, "topic");
-    get_parameter_or<std::string>("frame_id", frame_id, "base_link");
-    get_parameter_or<std::vector<double>>(
-      "grasp_pose", grasp_pose_vector, grasp_pose_vector);
+    get_parameter<std::string>("interface", interface);
+    get_parameter<std::string>("frame_id", frame_id);
+    get_parameter<std::vector<double>>(
+      "grasp_pose", grasp_pose_vector);
 
-    get_parameter_or<std::vector<double>>(
-      "object_pose", object_pose_vector, object_pose_vector);
+    get_parameter<std::vector<double>>(
+      "object_pose", object_pose_vector);
 
-    get_parameter_or<std::vector<double>>(
-      "object_dimensions", object_dimensions, object_dimensions);
+    get_parameter<std::vector<double>>(
+      "object_dimensions", object_dimensions);
 
-    get_parameter_or<std::string>("ee_id", ee_id, "robotiq_2f");
+    get_parameter<std::string>("ee_id", ee_id);
 
     get_parameter_or<double>(
       "delay", delay, 2.0);
