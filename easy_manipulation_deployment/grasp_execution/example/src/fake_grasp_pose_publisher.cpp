@@ -49,6 +49,7 @@ public:
     declare_parameter<std::vector<double>>("object_pose", object_pose_vector);
     declare_parameter<std::vector<double>>("object_dimensions", object_dimensions);
     declare_parameter<double>("delay", 2.0);
+    declare_parameter<std::string>("ee_id", "robotiq");
 
     std::string frame_id;
     std::string ee_id;
