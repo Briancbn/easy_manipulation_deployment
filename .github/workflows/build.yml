@@ -7,13 +7,12 @@ jobs:
     strategy:
       matrix:
         env:
-          - ROS_DISTRO: foxy
+          - ROS_DISTRO: rolling
             ROS_REPO: main
             TARGET_CMAKE_ARGS: "-DCMAKE_C_FLAGS='--coverage' -DCMAKE_CXX_FLAGS='--coverage'"
             AFTER_SCRIPT: "./coverage.sh ci"
             ISOLATION: "shell"
             CODE_COVERAGE: "codecov.io"
-          - {ROS_DISTRO: foxy, ISOLATION: "shell"}
           - {ROS_DISTRO: galactic, ISOLATION: "shell"}
           - {ROS_DISTRO: rolling, ISOLATION: "shell"}
     env:
@@ -29,7 +28,7 @@ jobs:
       # Run industrial_ci
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v2
         if: ${{ matrix.env.CODE_COVERAGE == 'codecov.io' }}
         with:
           files: ./coverage.info
