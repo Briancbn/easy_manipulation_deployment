@@ -134,7 +134,7 @@ void FingerGripper::generate_gripper_attributes()
 }
 
 void FingerGripper::plan_grasps(
-  GraspObject & object,
+  const GraspObject & object,
   emd_msgs::msg::GraspMethod & grasp_method,
   std::shared_ptr<CollisionObject> world_collision_object,
   std::string camera_frame)

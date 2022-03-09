@@ -242,8 +242,7 @@ protected:
   /*! \brief Vector of Grasp Objects available */
   std::vector<GraspObject> grasp_objects;
   /*! \brief Vector of End effectors available */
-  // std::vector<std::shared_ptr<EndEffector>> end_effectors;
-  std::vector<EndEffector> end_effectors;
+  std::vector<std::shared_ptr<EndEffector>> end_effectors;
 };
 }
 
