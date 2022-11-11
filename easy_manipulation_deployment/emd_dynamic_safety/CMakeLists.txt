@@ -17,6 +17,7 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(realtime_tools REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(joint_trajectory_controller REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
 
 find_package(moveit_core QUIET)
 
@@ -171,6 +172,7 @@ target_link_libraries(${PROJECT_NAME}_controller
 ament_target_dependencies(${PROJECT_NAME}_controller
   rclcpp
   rclcpp_lifecycle
+  lifecycle_msgs
   joint_trajectory_controller
   realtime_tools
   pluginlib

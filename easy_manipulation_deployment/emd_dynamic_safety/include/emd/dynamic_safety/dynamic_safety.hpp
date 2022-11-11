@@ -17,8 +17,6 @@
 
 #include <memory>
 #include <string>
-#include <unordered_map>
-#include <unordered_set>
 #include <utility>
 #include <vector>
 
@@ -29,51 +27,13 @@
 #include "emd/dynamic_safety/replanner.hpp"
 #include "emd/dynamic_safety/visualizer.hpp"
 #include "emd/profiler.hpp"
+#include "rclcpp_lifecycle/lifecycle_node.hpp"
 #include "realtime_tools/realtime_buffer.h"
 
 namespace dynamic_safety
 {
 
-struct Option
-{
-  double rate;
-
-  bool dynamic_parameterization;
-
-  bool use_description_server;
-
-  std::string description_server;
-
-  std::string joint_limits_parameter_server;
-  std::string joint_limits_parameter_namespace;
-
-  std::unordered_map<std::string, std::pair<double, double>> joint_limits;
-
-  std::string robot_description;
-  std::string robot_description_semantic;
-
-  std::string environment_joint_states_topic;
-
-  std::string moveit_scene_topic;
-
-  bool allow_replan;
-
-  bool benchmark;
-
-  bool visualize;
-
-  SafetyZone::Option safety_zone_options;
-
-  CollisionCheckerOption collision_checker_options;
-
-  // NextPointPublisher::Option next_point_publisher_options;
-
-  ReplannerOption replanner_options;
-
-  Visualizer::Option visualizer_options;
-
-  const Option & load(const rclcpp::Node::SharedPtr & node);
-};
+struct Option;
 
 class DynamicSafety
 {
@@ -128,6 +88,9 @@ public:
   explicit DynamicSafety(
     rclcpp::Node::SharedPtr node);
 
+  explicit DynamicSafety(
+    rclcpp_lifecycle::LifecycleNode::SharedPtr node);
+
   /// Constructor
   /** loading options
    * Load configurations from options
@@ -147,6 +110,9 @@ public:
    */
   void configure(
     const rclcpp::Node::SharedPtr & node);
+
+  void configure(
+    const rclcpp_lifecycle::LifecycleNode::SharedPtr & node);
 
   /// Add a new trajectory to activate the dynamic safety node.
   /**

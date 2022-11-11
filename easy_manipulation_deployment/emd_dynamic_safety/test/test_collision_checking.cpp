@@ -57,7 +57,7 @@ protected:
 
     // First point
     point.positions = {0, -M_PI / 4, 0, -M_PI * 3 / 4, 0, M_PI / 2, M_PI / 4};
-    point.time_from_start = rclcpp::Duration(0);
+    point.time_from_start = rclcpp::Duration(0, 0);
     trajectory_->points.push_back(point);
 
     // Second point

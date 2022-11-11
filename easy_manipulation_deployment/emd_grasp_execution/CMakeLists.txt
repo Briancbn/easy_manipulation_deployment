@@ -19,6 +19,7 @@ find_package(moveit_ros_planning REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(emd_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
@@ -43,6 +44,7 @@ ament_target_dependencies(grasp_execution_interface
   tf2
   tf2_ros
   tf2_geometry_msgs
+  trajectory_msgs
   pluginlib
   yaml_cpp_vendor
 )

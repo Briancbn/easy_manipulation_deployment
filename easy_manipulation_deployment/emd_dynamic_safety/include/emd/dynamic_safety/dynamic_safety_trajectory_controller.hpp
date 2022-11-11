@@ -42,13 +42,15 @@ public:
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_activate(const rclcpp_lifecycle::State & state) override;
 
-  controller_interface::return_type update() override;
+  controller_interface::return_type update(
+    const rclcpp::Time & time,
+    const rclcpp::Duration & period) override;
 
 protected:
   struct TimeData
   {
     TimeData()
-    : time(0.0), period(0.0), uptime(0.0)
+    : time(0.0), period(0, 0), uptime(0.0)
     {
     }
     rclcpp::Time time;
@@ -61,21 +63,21 @@ protected:
     const std::shared_ptr<trajectory_msgs::msg::JointTrajectory> & traj_msg);
 
   // Reserve vtable for bind
-  rclcpp_action::GoalResponse goal_callback(
+  rclcpp_action::GoalResponse goal_received_callback(
     const rclcpp_action::GoalUUID & uuid, std::shared_ptr<const FollowJTrajAction::Goal> goal)
   {
-    return JointTrajectoryController::goal_callback(uuid, goal);
+    return JointTrajectoryController::goal_received_callback(uuid, goal);
   }
 
   // Reserve vtable for bind
-  rclcpp_action::CancelResponse cancel_callback(
+  rclcpp_action::CancelResponse goal_cancelled_callback(
     const std::shared_ptr<rclcpp_action::ServerGoalHandle<FollowJTrajAction>> goal_handle)
   {
-    return JointTrajectoryController::cancel_callback(goal_handle);
+    return JointTrajectoryController::goal_cancelled_callback(goal_handle);
   }
 
   /// Override existing ones used in on_configure
-  void feedback_setup_callback(
+  void goal_accepted_callback(
     std::shared_ptr<rclcpp_action::ServerGoalHandle<FollowJTrajAction>> goal_handle);
 
 private:

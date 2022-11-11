@@ -33,24 +33,36 @@ template<typename T>
 inline void declare_or_get_param(
   T & output_value,
   const std::string & param_name,
-  const rclcpp::Node::SharedPtr & node,
+  const rclcpp::node_interfaces::NodeParametersInterface::SharedPtr & node,
   const rclcpp::Logger & logger,
   const T & default_value = T{})
 {
   try {
     if (node->has_parameter(param_name)) {
-      node->get_parameter_or<T>(param_name, output_value, default_value);
+      rclcpp::Parameter parameter_variant;
+      bool result = node->get_parameter(param_name, parameter_variant);
+      if (result) {
+        output_value = static_cast<T>(parameter_variant.get_value<T>());
+      } else {
+        output_value = default_value;
+      }
     } else {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
-      output_value = node->declare_parameter<T>(param_name, default_value);
+      output_value = node->declare_parameter(
+          param_name,
+          rclcpp::ParameterValue(default_value)).get<T>();
 #pragma GCC diagnostic pop
     }
   } catch (const rclcpp::exceptions::InvalidParameterTypeException & e) {
     // Catch a <double> parameter written in the yaml as "1" being considered an <int>
     if (std::is_same<T, double>::value) {
       node->undeclare_parameter(param_name);
-      output_value = static_cast<double>(node->declare_parameter<int>(param_name, 0));
+      output_value = static_cast<double>(
+          node->declare_parameter(
+          param_name,
+          rclcpp::ParameterValue(
+            static_cast<int>(default_value))).get<int>());
     } else {
       RCLCPP_ERROR(
         logger,

@@ -39,6 +39,7 @@ find_package(shape_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(tf2 REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 find_package(cv_bridge REQUIRED) # Delete later
 find_package(visualization_msgs REQUIRED)
 
@@ -91,6 +92,7 @@ if(epd_msgs_FOUND)
         geometry_msgs
         shape_msgs
         tf2_ros
+        tf2_geometry_msgs
         message_filters
         cv_bridge #temp
         visualization_msgs)
@@ -107,6 +109,7 @@ else()
         geometry_msgs
         shape_msgs
         tf2_ros
+        tf2_geometry_msgs
         message_filters
         cv_bridge #temp
         visualization_msgs)
@@ -209,6 +212,7 @@ if(epd_msgs_FOUND)
     cv_bridge
     message_filters
     tf2_ros
+    tf2_geometry_msgs
     PCL
     octomap
   )
@@ -220,6 +224,7 @@ else()
     cv_bridge
     message_filters
     tf2_ros
+    tf2_geometry_msgs
     PCL
     octomap
   )

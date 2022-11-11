@@ -69,13 +69,13 @@ bool GraspExecutionInterface::plan_and_execute_job(
   prompt_job_end(node_->get_logger(), result);
 
   if (!result) {
-    RCLCPP_ERROR(node_->get_logger(), "Plan to " + action_description + " failed!");
+    RCLCPP_ERROR(node_->get_logger(), "Plan to %s failed!", action_description.c_str());
     return false;
   }
 
   // ------------------- Move to point above SKU --------------------------
   if (!execute_plan("Move to " + action_description, target_id, option.planning_group)) {
-    RCLCPP_ERROR(node_->get_logger(), "Move to " + action_description + " failed!");
+    RCLCPP_ERROR(node_->get_logger(), "Move to %s failed!", action_description.c_str());
     return false;
   }
   return true;
@@ -97,13 +97,13 @@ bool GraspExecutionInterface::plan_and_execute_collision_job(
   prompt_job_end(node_->get_logger(), result);
 
   if (!result) {
-    RCLCPP_ERROR(node_->get_logger(), "Plan to " + action_description + " failed!");
+    RCLCPP_ERROR(node_->get_logger(), "Plan to %s failed!", action_description.c_str());
     return false;
   }
 
   // ------------------- Move to point above SKU --------------------------
   if (!execute_plan("Move to " + action_description, target_id, option.planning_group)) {
-    RCLCPP_ERROR(node_->get_logger(), "Move to " + action_description + " failed!");
+    RCLCPP_ERROR(node_->get_logger(), "Move to %s failed!", action_description.c_str());
     return false;
   }
   return true;
