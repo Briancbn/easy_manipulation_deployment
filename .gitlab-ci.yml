@@ -8,9 +8,9 @@ workflow:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_COMMIT_BRANCH =~ /^develop/
 
-foxy-coverage:
+humble-coverage:
   image:
-    name: ubuntu:20.04
+    name: ubuntu:22.04
 
   cache:
     key: ${CI_JOB_NAME}
@@ -19,7 +19,7 @@ foxy-coverage:
 
   variables:
     ISOLATION: "shell"
-    ROS_DISTRO: "foxy"
+    ROS_DISTRO: "humble"
     CCACHE_DIR: "${CI_PROJECT_DIR}/.ccache"
     TARGET_CMAKE_ARGS: "-DCMAKE_C_FLAGS='--coverage' -DCMAKE_CXX_FLAGS='--coverage'"
 
