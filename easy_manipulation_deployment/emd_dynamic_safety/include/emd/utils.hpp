@@ -50,16 +50,16 @@ inline void declare_or_get_param(
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
       output_value = node->declare_parameter(
-          param_name,
-          rclcpp::ParameterValue(default_value)).get<T>();
+        param_name,
+        rclcpp::ParameterValue(default_value)).get<T>();
 #pragma GCC diagnostic pop
     }
   } catch (const rclcpp::exceptions::InvalidParameterTypeException & e) {
     // Catch a <double> parameter written in the yaml as "1" being considered an <int>
-    if (std::is_same<T, double>::value) {
+    if constexpr (std::is_same<T, double>::value) {
       node->undeclare_parameter(param_name);
       output_value = static_cast<double>(
-          node->declare_parameter(
+        node->declare_parameter(
           param_name,
           rclcpp::ParameterValue(
             static_cast<int>(default_value))).get<int>());

@@ -144,6 +144,7 @@ add_library(${PROJECT_NAME}
   src/interpolate.cpp
   src/visualizer.cpp
   src/dynamic_safety.cpp
+  src/dynamic_safety_options.cpp
 )
 
 target_link_libraries(${PROJECT_NAME}
@@ -152,6 +153,7 @@ target_link_libraries(${PROJECT_NAME}
 
 ament_target_dependencies(${PROJECT_NAME}
   rclcpp
+  rclcpp_lifecycle
 )
 
 add_library(${PROJECT_NAME}_controller

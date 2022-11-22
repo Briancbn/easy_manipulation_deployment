@@ -324,7 +324,7 @@ void CollisionChecker::Impl::run_once(
   {
     std::unique_lock<std::mutex> lk(init_m_);
     init_cv_.wait(
-      lk, [ & n_active_workers_ = n_active_workers_]
+      lk, [&n_active_workers_ = n_active_workers_]
       {return n_active_workers_ == 0;});
   }
 

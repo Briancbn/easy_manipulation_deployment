@@ -53,7 +53,7 @@ TEST(FCLFunctionTest, CollisionTestCollide)
   collision2_transform.setIdentity();
 
 #if FCL_VERSION_0_6_OR_HIGHER == 1
-  collision2_transform.translation() << 0.025, 0.005, 0.01;
+  collision2_transform.translation() << 0.04, 0.005, 0.015;
 #else
   collision2_transform.setTranslation(
     grasp_planner::collision::Vector(0.04, 0.005, 0.015));
@@ -108,7 +108,7 @@ TEST(FCLFunctionTest, CollisionTestNoCollide)
   collision2_transform.setIdentity();
 
 #if FCL_VERSION_0_6_OR_HIGHER == 1
-  collision2_transform.translation() << 0.025, 0.005, 0.01;
+  collision2_transform.translation() << 0.07, 0.07, 0.07;
 #else
   collision2_transform.setTranslation(
     grasp_planner::collision::Vector(0.07, 0.07, 0.07));
@@ -218,7 +218,7 @@ TEST(FCLFunctionTest, RGBCollisionTestNoCollide)
   collision2_transform.setIdentity();
 
 #if FCL_VERSION_0_6_OR_HIGHER == 1
-  collision2_transform.translation() << 0.025, 0.005, 0.01;
+  collision2_transform.translation() << 0.09, 0.09, 0.09;
 #else
   collision2_transform.setTranslation(
     grasp_planner::collision::Vector(0.09, 0.09, 0.09));

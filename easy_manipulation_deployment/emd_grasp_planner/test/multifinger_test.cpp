@@ -75,6 +75,8 @@ GraspObject MultiFingerTest::GenerateObjectHorizontal()
   float breadth = 0.01;
   float height = 0.02;
 
+  rectangle_cloud->width = 0;
+  rectangle_cloud->height = 1;
   for (float length_ = 0.0; length_ < length; length_ += 0.0025) {
     for (float breadth_ = 0.0; breadth_ < breadth; breadth_ += 0.0025) {
       for (float height_ = 0.0; height_ < height; height_ += 0.0025) {
@@ -83,6 +85,7 @@ GraspObject MultiFingerTest::GenerateObjectHorizontal()
         temp_point.y = breadth_;
         temp_point.z = height_;
         rectangle_cloud->points.push_back(temp_point);
+        rectangle_cloud->width++;
       }
     }
   }
@@ -103,6 +106,8 @@ GraspObject MultiFingerTest::GenerateObjectVertical()
   float breadth = 0.05;
   float height = 0.02;
 
+  rectangle_cloud->width = 0;
+  rectangle_cloud->height = 1;
   for (float length_ = 0.0; length_ < length; length_ += 0.0025) {
     for (float breadth_ = 0.0; breadth_ < breadth; breadth_ += 0.0025) {
       for (float height_ = 0.0; height_ < height; height_ += 0.0025) {
@@ -111,6 +116,7 @@ GraspObject MultiFingerTest::GenerateObjectVertical()
         temp_point.y = breadth_;
         temp_point.z = height_;
         rectangle_cloud->points.push_back(temp_point);
+        rectangle_cloud->width++;
       }
     }
   }

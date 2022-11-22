@@ -41,7 +41,7 @@ public:
       std::is_base_of<grasp_execution::moveit2::MoveitCppGraspExecution, type>::value,
       "Execution_interface should inherit from grasp_execution::GraspExecutionInterface");
     // ------------------- Attach grasp object to robot --------------------------
-    RCLCPP_INFO(LOGGER_EE_INTERFACE, "Attaching to robot ee frame: [" + ee_link + "]");
+    RCLCPP_INFO(LOGGER_EE_INTERFACE, "Attaching to robot ee frame: [%s]", ee_link.c_str());
 
     execution_interface->attach_object_to_ee(target_id, ee_link);
     return true;
@@ -57,7 +57,7 @@ public:
       std::is_base_of<grasp_execution::moveit2::MoveitCppGraspExecution, type>::value,
       "Execution_interface should inherit from grasp_execution::GraspExecutionInterface");
 
-    RCLCPP_INFO(LOGGER_EE_INTERFACE, "Detaching from robot ee frame: [" + ee_link + "]");
+    RCLCPP_INFO(LOGGER_EE_INTERFACE, "Detaching from robot ee frame: [%s]", ee_link.c_str());
     execution_interface->detach_object_from_ee(target_id, ee_link);
 
     return true;

@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #include <string>
 #include <unordered_map>
+#include <utility>
 
 #include "rclcpp/node_interfaces/node_parameters_interface.hpp"
 #include "emd/dynamic_safety/safety_zone.hpp"
@@ -27,7 +29,7 @@
 namespace dynamic_safety
 {
 
-struct Option
+struct Option : std::enable_shared_from_this<Option>
 {
   double rate;
 
@@ -65,7 +67,7 @@ struct Option
 
   Visualizer::Option visualizer_options;
 
-  const Option & load(
+  std::shared_ptr<Option> load(
     const rclcpp::node_interfaces::NodeParametersInterface::SharedPtr & node,
     const rclcpp::Logger & LOGGER = rclcpp::get_logger("dynamic_safety"));
 };

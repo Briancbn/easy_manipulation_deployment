@@ -48,8 +48,7 @@ public:
   TesseractReplannerContext(
     const std::string & robot_urdf,
     const std::string & robot_srdf,
-    const dynamic_safety::ReplannerOption & option,
-    const rclcpp::Node::SharedPtr & node);
+    const dynamic_safety::ReplannerOption & option);
 
   void run(
     const std::vector<std::string> & joint_names,

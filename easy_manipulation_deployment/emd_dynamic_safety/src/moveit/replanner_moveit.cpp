@@ -30,8 +30,7 @@ static const rclcpp::Logger LOGGER = rclcpp::get_logger("dynamic_safety_moveit.r
 MoveitReplannerContext::MoveitReplannerContext(
   const std::string & robot_urdf,
   const std::string & robot_srdf,
-  const dynamic_safety::ReplannerOption & option,
-  const rclcpp::Node::SharedPtr & node)
+  const dynamic_safety::ReplannerOption & option)
 {
   urdf::ModelSharedPtr umodel = std::make_shared<urdf::Model>();
   srdf::ModelSharedPtr smodel = std::make_shared<srdf::Model>();
@@ -52,8 +51,7 @@ MoveitReplannerContext::MoveitReplannerContext(
   // Joint Limit loader
   // new node for parameter loading
   auto joint_limits_node = std::make_shared<rclcpp::Node>(
-    std::string(
-      node->get_name()) + "_joint_limits_loader");
+    "dynamic_safety_joint_limits_loader");
 
   auto joint_limit_parameters_client =
     std::make_shared<rclcpp::AsyncParametersClient>(
@@ -124,76 +122,76 @@ MoveitReplannerContext::MoveitReplannerContext(
 
   // new node for planning config parameter loading
   auto planner_config_loader_node = std::make_shared<rclcpp::Node>(
-    std::string(
-      node->get_name()) + "_planner_config_loader",
+    "dynamic_safety_planner_config_loader",
     rclcpp::NodeOptions().allow_undeclared_parameters(true));
 
-  // Load self parameters
-  if (option.planner_parameter_server == node->get_name()) {
-    auto planner_config =
-      node->list_parameters({option.group, option.planner_parameter_namespace}, 5);
+  // // Load self parameters
+  // if (option.planner_parameter_server == node->get_name()) {
+  //   auto planner_config =
+  //     node->list_parameters({option.group, option.planner_parameter_namespace}, 5);
+  //   if (!planner_config.names.empty()) {
+  //     std::string result = "Parameters found:\n";
+  //     for (auto & name : planner_config.names) {
+  //       result += "\t" + name + "\n";
+  //     }
+  //     RCLCPP_WARN(LOGGER, "%s", result.c_str());
+  //     auto planner_config_params = node->get_parameters(planner_config.names);
+  //     planner_config_loader_node->set_parameters(planner_config_params);
+  //   } else {
+  //     RCLCPP_ERROR(
+  //       LOGGER, "no planner configs defined");
+  //   }
+  // } else {
+
+  // Getting parameters from external node
+  auto parameters_client = std::make_shared<rclcpp::AsyncParametersClient>(
+    planner_config_loader_node, option.planner_parameter_server);
+  while (!parameters_client->wait_for_service()) {
+    if (!rclcpp::ok()) {
+      RCLCPP_ERROR(
+        LOGGER, "Interrupted while waiting for %s service. Exiting.",
+        option.planner_parameter_server.c_str());
+      // TODO(anyone): exception handling.
+      break;
+    }
+    RCLCPP_ERROR(
+      LOGGER, "%s service not available, waiting again...",
+      option.planner_parameter_server.c_str());
+  }
+  RCLCPP_INFO(
+    LOGGER, "Connected to description server %s!!",
+    option.planner_parameter_server.c_str());
+  rcl_interfaces::msg::ListParametersResult planner_config;
+  while (planner_config.names.empty()) {
+    try {
+      RCLCPP_INFO(LOGGER, "Get parameters");
+      auto planner_config_future = parameters_client->list_parameters(
+        {option.group, option.planner_parameter_namespace},
+        5);
+      rclcpp::spin_until_future_complete(
+        planner_config_loader_node, planner_config_future);
+      planner_config = planner_config_future.get();
+    } catch (const std::exception & e) {
+      RCLCPP_ERROR(LOGGER, "%s", e.what());
+    }
     if (!planner_config.names.empty()) {
       std::string result = "Parameters found:\n";
       for (auto & name : planner_config.names) {
         result += "\t" + name + "\n";
       }
       RCLCPP_WARN(LOGGER, "%s", result.c_str());
-      auto planner_config_params = node->get_parameters(planner_config.names);
-      planner_config_loader_node->set_parameters(planner_config_params);
+      break;
     } else {
       RCLCPP_ERROR(
-        LOGGER, "no planner configs defined");
+        LOGGER, "dynamic_safety is waiting for planner_configs");
     }
-  } else {
-    // Getting parameters from external node
-    auto parameters_client = std::make_shared<rclcpp::AsyncParametersClient>(
-      planner_config_loader_node, option.planner_parameter_server);
-    while (!parameters_client->wait_for_service()) {
-      if (!rclcpp::ok()) {
-        RCLCPP_ERROR(
-          LOGGER, "Interrupted while waiting for %s service. Exiting.",
-          option.planner_parameter_server.c_str());
-        // TODO(anyone): exception handling.
-        break;
-      }
-      RCLCPP_ERROR(
-        LOGGER, "%s service not available, waiting again...",
-        option.planner_parameter_server.c_str());
-    }
-    RCLCPP_INFO(
-      LOGGER, "Connected to description server %s!!",
-      option.planner_parameter_server.c_str());
-    rcl_interfaces::msg::ListParametersResult planner_config;
-    while (planner_config.names.empty()) {
-      try {
-        RCLCPP_INFO(LOGGER, "Get parameters");
-        auto planner_config_future = parameters_client->list_parameters(
-          {option.group, option.planner_parameter_namespace},
-          5);
-        rclcpp::spin_until_future_complete(
-          planner_config_loader_node, planner_config_future);
-        planner_config = planner_config_future.get();
-      } catch (const std::exception & e) {
-        RCLCPP_ERROR(LOGGER, "%s", e.what());
-      }
-      if (!planner_config.names.empty()) {
-        std::string result = "Parameters found:\n";
-        for (auto & name : planner_config.names) {
-          result += "\t" + name + "\n";
-        }
-        RCLCPP_WARN(LOGGER, "%s", result.c_str());
-        break;
-      } else {
-        RCLCPP_ERROR(
-          LOGGER, "dynamic_safety is waiting for planner_configs");
-      }
-      usleep(100000);
-    }
-
-    auto f = parameters_client->get_parameters(planner_config.names);
-    rclcpp::spin_until_future_complete(planner_config_loader_node, f);
-    planner_config_loader_node->set_parameters(f.get());
+    usleep(100000);
   }
+
+  auto f = parameters_client->get_parameters(planner_config.names);
+  rclcpp::spin_until_future_complete(planner_config_loader_node, f);
+  planner_config_loader_node->set_parameters(f.get());
+  // }
 
   if (!planning_manager_->initialize(
       scene_->getRobotModel(),

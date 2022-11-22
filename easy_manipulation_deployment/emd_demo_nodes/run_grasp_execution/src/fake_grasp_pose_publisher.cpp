@@ -39,13 +39,6 @@ public:
     geometry_msgs::msg::PoseStamped grasp_pose, object_pose;
     grasp_pose.header.stamp = this->now();
 
-    declare_parameter("interface");
-    declare_parameter("frame_id");
-    declare_parameter("grasp_pose");
-    declare_parameter("object_pose");
-    declare_parameter("object_dimensions");
-    declare_parameter("delay");
-
     std::string frame_id;
     std::string ee_id;
 
@@ -55,26 +48,18 @@ public:
 
     double delay;
 
-    get_parameter_or<std::string>("interface", interface, "topic");
-    get_parameter_or<std::string>("frame_id", frame_id, "base_link");
-    get_parameter_or<std::vector<double>>(
-      "grasp_pose", grasp_pose_vector, grasp_pose_vector);
-
-    get_parameter_or<std::vector<double>>(
-      "object_pose", object_pose_vector, object_pose_vector);
-
-    get_parameter_or<std::vector<double>>(
-      "object_dimensions", object_dimensions, object_dimensions);
-
-    get_parameter_or<std::string>("ee_id", ee_id, "robotiq_2f");
-
-    get_parameter_or<double>(
-      "delay", delay, 2.0);
+    interface = declare_parameter("interface", "topic");
+    frame_id = declare_parameter("frame_id", "base_link");
+    grasp_pose_vector = declare_parameter("grasp_pose", grasp_pose_vector);
+    object_pose_vector = declare_parameter("object_pose", object_pose_vector);
+    object_dimensions = declare_parameter("object_dimensions", object_dimensions);
+    ee_id = declare_parameter("object_dimensions", "robotiq_2f");
+    delay = declare_parameter("delay", 2.0);
 
     if (!parse_pose_vector(grasp_pose_vector, grasp_pose.pose)) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Grasp pose should have 6 or 7 arguments, instead %u is found.",
+        "Grasp pose should have 6 or 7 arguments, instead %lu is found.",
         grasp_pose_vector.size());
       return;
     }
@@ -83,7 +68,7 @@ public:
     if (!parse_pose_vector(object_pose_vector, object_pose.pose)) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Object pose should have 6 or 7 arguments, instead %u is found.",
+        "Object pose should have 6 or 7 arguments, instead %lu is found.",
         object_pose_vector.size());
       return;
     }
@@ -91,7 +76,7 @@ public:
     if (object_dimensions.size() != 3) {
       RCLCPP_ERROR(
         this->get_logger(),
-        "Object dimension shoudl have 3 arguments, instead %u is found.",
+        "Object dimension shoudl have 3 arguments, instead %lu is found.",
         object_dimensions.size());
       return;
     }

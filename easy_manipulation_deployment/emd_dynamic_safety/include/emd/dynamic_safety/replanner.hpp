@@ -41,13 +41,11 @@ public:
   /// Configure the replanner to prepare for planning.
   /**
    * \param[in] option Collison checker options.
-   * \param[in] node to inherite parameters from (MoveIt)
    * \param[in] robot_urdf Robot URDF Model.
    * \param[in] robot_srdf Robot SRDFConfiguration
    */
   void configure(
     const ReplannerOption & option,
-    const rclcpp::Node::SharedPtr & node,
     const std::string & robot_urdf,
     const std::string & robot_srdf);
 
@@ -91,7 +89,6 @@ public:
   /// Configure the replanner to prepare for planning.
   /**
    * \param[in] option Collison checker options.
-   * \param[in] node to inherite parameters from (MoveIt)
    * \param[in] robot_urdf Robot URDF Model.
    * \param[in] robot_srdf Robot SRDFConfiguration
    */

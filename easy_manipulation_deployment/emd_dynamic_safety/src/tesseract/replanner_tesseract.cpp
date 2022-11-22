@@ -60,8 +60,7 @@ static const rclcpp::Logger LOGGER =
 TesseractReplannerContext::TesseractReplannerContext(
   const std::string & robot_urdf,
   const std::string & robot_srdf,
-  const dynamic_safety::ReplannerOption & option,
-  const rclcpp::Node::SharedPtr & node)
+  const dynamic_safety::ReplannerOption & option)
 {
   env_ = std::make_shared<tesseract_environment::Environment>(true);
   tesseract_scene_graph::ResourceLocator::Ptr locator =
@@ -221,8 +220,7 @@ TesseractReplannerContext::TesseractReplannerContext(
   // Joint Limit loader
   // new node for parameter loading
   auto joint_limits_node = std::make_shared<rclcpp::Node>(
-    std::string(
-      node->get_name()) + "_joint_limits_loader");
+    "dynamic_safety_joint_limits_loader");
 
   auto joint_limit_parameters_client =
     std::make_shared<rclcpp::AsyncParametersClient>(

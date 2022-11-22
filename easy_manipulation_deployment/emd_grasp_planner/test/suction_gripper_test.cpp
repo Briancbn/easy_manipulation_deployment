@@ -71,6 +71,8 @@ GraspObject SuctionGripperTest::GenerateObjectHorizontal()
   float length = 0.05;
   float breadth = 0.03;
   float height = 0.01;
+  rectangle_cloud->height = 1;
+  rectangle_cloud->width = 0;
 
   for (float length_ = 0.0; length_ < length; length_ += 0.0025) {
     for (float breadth_ = 0.0; breadth_ < breadth; breadth_ += 0.0025) {
@@ -80,6 +82,7 @@ GraspObject SuctionGripperTest::GenerateObjectHorizontal()
         temp_point.y = breadth_;
         temp_point.z = height_;
         rectangle_cloud->points.push_back(temp_point);
+        rectangle_cloud->width++;
       }
     }
   }
@@ -109,6 +112,9 @@ GraspObject SuctionGripperTest::GenerateObjectVertical()
   float breadth = 0.01;
   float height = 0.03;
 
+  rectangle_cloud->height = 1;
+  rectangle_cloud->width = 0;
+
   for (float length_ = 0.0; length_ < length; length_ += 0.0025) {
     for (float breadth_ = 0.0; breadth_ < breadth; breadth_ += 0.0025) {
       for (float height_ = 0.0; height_ < height; height_ += 0.0025) {
@@ -117,6 +123,7 @@ GraspObject SuctionGripperTest::GenerateObjectVertical()
         temp_point.y = breadth_;
         temp_point.z = height_;
         rectangle_cloud->points.push_back(temp_point);
+        rectangle_cloud->width++;
       }
     }
   }
@@ -137,6 +144,8 @@ GraspObject SuctionGripperTest::CreateSphereCloud(
 {
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr output_sphere_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
   float px, py, pz;
+  output_sphere_cloud->width = 0;
+  output_sphere_cloud->height = 1;
   for (float phi = 0; phi < M_PI; phi += M_PI / resolution) {
     pz = z_scale * radius * cos(phi);
     for (float theta = 0; theta < 2 * M_PI; theta += 2 * M_PI / resolution) {
@@ -148,6 +157,7 @@ GraspObject SuctionGripperTest::CreateSphereCloud(
       point.z = pz + centerpoint(2);
       point.r = 255;
       output_sphere_cloud->points.push_back(point);
+      output_sphere_cloud->width++;
     }
   }
   // output_sphere_cloud->is_dense = true;

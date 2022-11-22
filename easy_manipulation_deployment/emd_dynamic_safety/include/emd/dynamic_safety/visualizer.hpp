@@ -15,6 +15,7 @@
 #ifndef EMD__DYNAMIC_SAFETY__VISUALIZER_HPP_
 #define EMD__DYNAMIC_SAFETY__VISUALIZER_HPP_
 
+#include <memory>
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
@@ -57,7 +58,6 @@ public:
    * \param[in] zone_option This can be used to create safety zone.
    */
   void configure(
-    const rclcpp::Node::SharedPtr & node,
     const Option & option,
     const SafetyZone::Option & zone_option,
     const std::string & robot_urdf,
@@ -143,6 +143,8 @@ private:
 
   std::atomic_bool start_;
   rclcpp::CallbackGroup::SharedPtr visualizer_callback_group_;
+
+  std::shared_ptr<std::thread> worker_;
 
   // Safety zone
   SafetyZone safety_zone_;

@@ -20,7 +20,7 @@
 namespace dynamic_safety
 {
 
-const Option & Option::load(
+std::shared_ptr<Option> Option::load(
   const rclcpp::node_interfaces::NodeParametersInterface::SharedPtr & node,
   const rclcpp::Logger & LOGGER)
 {
@@ -394,7 +394,7 @@ const Option & Option::load(
   }
 
   // Return idiom
-  return *this;
+  return shared_from_this();
 }
 
 }  // namespace dynamic_safety

@@ -23,6 +23,8 @@ GraspObjectTest::GraspObjectTest()
 
 void GraspObjectTest::GenerateObjectCloud(float length, float breadth, float height)
 {
+  object_cloud->height = 1;
+  object_cloud->width = 0;
   for (float length_ = 0.0; length_ < length; length_ += 0.0025) {
     for (float breadth_ = 0.0; breadth_ < breadth; breadth_ += 0.0025) {
       for (float height_ = 0.0; height_ < height; height_ += 0.0025) {
@@ -31,6 +33,7 @@ void GraspObjectTest::GenerateObjectCloud(float length, float breadth, float hei
         temp_point.y = breadth_;
         temp_point.z = height_;
         object_cloud->points.push_back(temp_point);
+        object_cloud->width++;
       }
     }
   }

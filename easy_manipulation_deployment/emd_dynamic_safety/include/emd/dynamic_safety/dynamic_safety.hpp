@@ -96,7 +96,7 @@ public:
    * Load configurations from options
    * \param[in] option configuration for dynamic safety
    */
-  explicit DynamicSafety(const Option & option);
+  explicit DynamicSafety(const std::shared_ptr<Option> & option);
 
   /// Destructor
   virtual ~DynamicSafety();

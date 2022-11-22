@@ -54,7 +54,6 @@ Visualizer::Visualizer()
 
 
 void Visualizer::configure(
-  const rclcpp::Node::SharedPtr & node,
   const Option & option,
   const SafetyZone::Option & zone_option,
   const std::string & robot_urdf,
@@ -73,7 +72,7 @@ void Visualizer::configure(
   }
   // Construct planning scene
   scene_ = std::make_shared<planning_scene::PlanningScene>(umodel, smodel);
-  node_ = node;
+  node_ = std::make_shared<rclcpp::Node>("dynamic_safety_visualizer");
   start_ = false;
   pub_ = node_->create_publisher<visualization_msgs::msg::Marker>(
     option.topic, 2);
@@ -81,7 +80,7 @@ void Visualizer::configure(
   step_ = option.step;
   tcp_link_ = option.tcp_link;
   safety_zone_.set(zone_option);
-  visualizer_callback_group_ = node->create_callback_group(
+  visualizer_callback_group_ = node_->create_callback_group(
     rclcpp::CallbackGroupType::MutuallyExclusive);
   rclcpp::SubscriptionOptions env_state_sub_option;
   env_state_sub_option.callback_group = visualizer_callback_group_;
@@ -178,12 +177,20 @@ void Visualizer::update(
 void Visualizer::start()
 {
   start_ = true;
+  worker_ = std::make_shared<std::thread>(
+    [this]() {
+      while (start_ && rclcpp::ok()) {
+        rclcpp::spin_some(node_);
+      }
+    });
 }
 
 void Visualizer::stop()
 {
   timer_.reset();
   start_ = false;
+  worker_->join();
+  worker_.reset();
 }
 
 void Visualizer::reset()

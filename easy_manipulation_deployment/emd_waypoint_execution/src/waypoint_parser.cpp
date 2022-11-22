@@ -53,7 +53,7 @@ bool emd::WayPointParser::load_waypoints(
   if (!std::filesystem::exists(path)) {
     RCLCPP_ERROR(
       LOGGER_WAYPOINT,
-      "Action Json filepath: \"" + waypoint_filepath + " \"not found!");
+      "Action Json filepath: \"%s\"not found!", waypoint_filepath.c_str());
     return false;
   }
   std::ifstream ifs;
@@ -64,7 +64,7 @@ bool emd::WayPointParser::load_waypoints(
   builder["collectComments"] = true;
   JSONCPP_STRING errs;
   if (!parseFromStream(builder, ifs, &root, &errs)) {
-    RCLCPP_ERROR(LOGGER_WAYPOINT, errs);
+    RCLCPP_ERROR_STREAM(LOGGER_WAYPOINT, errs);
   }
   Json::Value action_name_obj = root.get("actions", "default");
   std::vector<std::string> action_names;

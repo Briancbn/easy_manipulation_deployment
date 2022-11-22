@@ -41,19 +41,18 @@ public:
 
   void configure(
     const ReplannerOption & option,
-    const rclcpp::Node::SharedPtr & node,
     const std::string & robot_urdf,
     const std::string & robot_srdf)
   {
     if (option.framework == "moveit") {
 #ifdef EMD_DYNAMIC_SAFETY_MOVEIT
       context_ = std::make_unique<dynamic_safety_moveit::MoveitReplannerContext>(
-        robot_urdf, robot_srdf, option, node);
+        robot_urdf, robot_srdf, option);
 #endif
     } else if (option.framework == "tesseract") {
 #ifdef EMD_DYNAMIC_SAFETY_TESSERACT
       context_ = std::make_unique<dynamic_safety_tesseract::TesseractReplannerContext>(
-        robot_urdf, robot_srdf, option, node);
+        robot_urdf, robot_srdf, option);
 #endif
     }
     deadline_ = option.deadline;
@@ -361,11 +360,10 @@ Replanner::~Replanner()
 
 void Replanner::configure(
   const ReplannerOption & option,
-  const rclcpp::Node::SharedPtr & node,
   const std::string & robot_urdf,
   const std::string & robot_srdf)
 {
-  impl_ptr_->configure(option, node, robot_urdf, robot_srdf);
+  impl_ptr_->configure(option, robot_urdf, robot_srdf);
 }
 
 void Replanner::run_async(

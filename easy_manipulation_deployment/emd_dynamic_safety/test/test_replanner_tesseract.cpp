@@ -37,7 +37,7 @@ TEST_F(ReplannerTest, TesseractTrajOptReplanner)
   option_.group = "panda_arm";
   option_.deadline = 1.0;
 
-  replanner_.configure(option_, replanner_node, robot_.get_urdf(), robot_.get_srdf());
+  replanner_.configure(option_, robot_.get_urdf(), robot_.get_srdf());
   trajectory_msgs::msg::JointTrajectoryPoint start_point;
   start_point.positions = {0, 0, 0, 0, 0, 1.571, 0.785};
   trajectory_msgs::msg::JointTrajectoryPoint end_point;
@@ -58,24 +58,24 @@ TEST_F(ReplannerTest, TesseractTrajOptReplanner)
   print_traj(result);
 
   option_.planner = "ompl-trajopt";
-  replanner_.configure(option_, replanner_node, robot_.get_urdf(), robot_.get_srdf());
+  replanner_.configure(option_, robot_.get_urdf(), robot_.get_srdf());
   replanner_.run_async(joint_names_, start_point, end_point);
   result = replanner_.get_result();
   print_traj(result);
 
   option_.planner = "ompl-trajopt_ifopt";
-  replanner_.configure(option_, replanner_node, robot_.get_urdf(), robot_.get_srdf());
+  replanner_.configure(option_, robot_.get_urdf(), robot_.get_srdf());
   replanner_.run_async(joint_names_, start_point, end_point);
   result = replanner_.get_result();
   print_traj(result);
 
   option_.planner = "trajopt";
-  replanner_.configure(option_, replanner_node, robot_.get_urdf(), robot_.get_srdf());
+  replanner_.configure(option_, robot_.get_urdf(), robot_.get_srdf());
   replanner_.run_async(joint_names_, start_point, end_point);
   result = replanner_.get_result();
   print_traj(result);
   option_.planner = "trajopt_ifopt";
-  replanner_.configure(option_, replanner_node, robot_.get_urdf(), robot_.get_srdf());
+  replanner_.configure(option_, robot_.get_urdf(), robot_.get_srdf());
   replanner_.run_async(joint_names_, start_point, end_point);
   result = replanner_.get_result();
   print_traj(result);
