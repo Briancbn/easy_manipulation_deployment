@@ -28,7 +28,7 @@
 #include "emd/dynamic_safety/visualizer.hpp"
 #include "emd/profiler.hpp"
 #include "rclcpp_lifecycle/lifecycle_node.hpp"
-#include "realtime_tools/realtime_buffer.h"
+#include "realtime_tools/realtime_buffer.hpp"
 
 namespace dynamic_safety
 {

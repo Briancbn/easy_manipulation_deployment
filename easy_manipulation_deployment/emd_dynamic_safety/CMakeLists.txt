@@ -154,35 +154,36 @@ target_link_libraries(${PROJECT_NAME}
 ament_target_dependencies(${PROJECT_NAME}
   rclcpp
   rclcpp_lifecycle
-)
-
-add_library(${PROJECT_NAME}_controller
-  SHARED
-  src/dynamic_safety_trajectory_controller.cpp
-)
-
-# Remove pedantic
-get_target_property(target_options ${PROJECT_NAME}_controller COMPILE_OPTIONS)
-list(REMOVE_ITEM target_options "-Wpedantic")
-list(REMOVE_ITEM target_options "-Wconversion")
-list(REMOVE_ITEM target_options "-Wsign-conversion")
-set_property(TARGET ${PROJECT_NAME}_controller PROPERTY COMPILE_OPTIONS ${target_options})
-target_link_libraries(${PROJECT_NAME}_controller
-  ${PROJECT_NAME}
-)
-
-ament_target_dependencies(${PROJECT_NAME}_controller
-  rclcpp
-  rclcpp_lifecycle
-  lifecycle_msgs
-  joint_trajectory_controller
   realtime_tools
-  pluginlib
 )
 
-# prevent pluginlib from using boost
-target_compile_definitions(${PROJECT_NAME}_controller PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
-pluginlib_export_plugin_description_file(controller_interface controller_plugins.xml)
+# add_library(${PROJECT_NAME}_controller
+#   SHARED
+#   src/dynamic_safety_trajectory_controller.cpp
+# )
+#
+# # Remove pedantic
+# get_target_property(target_options ${PROJECT_NAME}_controller COMPILE_OPTIONS)
+# list(REMOVE_ITEM target_options "-Wpedantic")
+# list(REMOVE_ITEM target_options "-Wconversion")
+# list(REMOVE_ITEM target_options "-Wsign-conversion")
+# set_property(TARGET ${PROJECT_NAME}_controller PROPERTY COMPILE_OPTIONS ${target_options})
+# target_link_libraries(${PROJECT_NAME}_controller
+#   ${PROJECT_NAME}
+# )
+#
+# ament_target_dependencies(${PROJECT_NAME}_controller
+#   rclcpp
+#   rclcpp_lifecycle
+#   lifecycle_msgs
+#   joint_trajectory_controller
+#   realtime_tools
+#   pluginlib
+# )
+
+# # prevent pluginlib from using boost
+# target_compile_definitions(${PROJECT_NAME}_controller PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
+# pluginlib_export_plugin_description_file(controller_interface controller_plugins.xml)
 
 install(
   DIRECTORY include/
@@ -196,7 +197,7 @@ install(FILES controller_plugins.xml
 install(
   TARGETS
   ${PROJECT_NAME}
-  ${PROJECT_NAME}_controller
+  #  ${PROJECT_NAME}_controller
   RUNTIME DESTINATION bin
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib)
@@ -222,7 +223,7 @@ ament_export_include_directories(
 
 ament_export_libraries(
   ${PROJECT_NAME}
-  ${PROJECT_NAME}_controller
+  #${PROJECT_NAME}_controller
 )
 
 ament_package()
